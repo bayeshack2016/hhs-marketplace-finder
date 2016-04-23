@@ -93,14 +93,19 @@
                     <fieldset>
 
                         <label for="zip">Your Zip Code</label>
-                        <input id="zip" type="text" placeholder="94720">
+                        <input id="zip" type="text" placeholder="94720" required>
 
 
                         <label for="age">Your Age</label>
                         <input id="age" type="text" placeholder="42">
 
                         <label for="sex">Your Gender</label>
-                        <input id="sex" type="text" placeholder="Female">
+                        <select id="sex">
+                            <option>prefer not to say</option>
+                            <option>female</option>
+                            <option>male</option>
+                            <option>transgendered</option>
+                        </select>
 
                         <button type="submit" class="pure-button">Submit</button>
                     </fieldset>
