@@ -7,7 +7,7 @@
         <a class="pure-menu-heading" href="">Bayes Hack 2016 - Find your best health care provider</a>
 
         <ul class="pure-menu-list">
-            <li class="pure-menu-item pure-menu-selected"><a href="#top" class="pure-menu-link">Home</a></li>
+            <li class="pure-menu-item"><a href="#top" class="pure-menu-link">Home</a></li>
             <li class="pure-menu-item"><a href="https://github.com/davidcdupuis/bayes-hack-2016" class="pure-menu-link">Code</a></li>
             <li class="pure-menu-item"><a href="https://github.com/davidcdupuis/bayes-hack-2016/contributors" class="pure-menu-link">About us</a></li>
             <li class="pure-menu-item"><a href="#form" class="pure-menu-link">Try it!</a></li>
@@ -22,7 +22,7 @@
             It's <em>your</em> health care -- make it work for you!
         </p>
         <p>
-            <a href="http://purecss.io" class="pure-button pure-button-primary">Get Started</a>
+            <a href="#form" class="pure-button pure-button-primary">Get Started</a>
         </p>
     </div>
 </div>
@@ -95,11 +95,11 @@
                     <fieldset>
 
                         <label for="zip">Your Zip Code</label>
-                        <input id="zip" type="text" placeholder="94720" required>
+                        <input class="pure-input-1-4" id="zip" type="text" placeholder="94720" required>
 
 
                         <label for="age">Your Age</label>
-                        <input id="age" type="text" placeholder="42">
+                        <input class="pure-input-1-4" id="age" type="text" placeholder="42">
 
                         <label for="sex">Your Gender</label>
                         <select id="sex">
@@ -108,6 +108,17 @@
                             <option>male</option>
                             <option>transgendered</option>
                         </select>
+
+                        <label for="smoke">Smoking</label>
+                        <select id="smoke">
+                            <option>prefer not to say</option>
+                            <option>never did</option>
+                            <option>used to</option>
+                            <option>still do</option>
+                        </select>
+
+                        <label for="doctor">Your Doctor</label>
+                        <input class="pure-input-1-4" id="doctor" type="text" placeholder="doesn't matter">
 
                         <button type="submit" class="pure-button">Submit</button>
                     </fieldset>
@@ -145,7 +156,7 @@
     </div>
 
     <div class="footer l-box is-center">
-        <href a="https://bayeshack.org">About Bayes Hack</href>
+        <href a="https://bayeshack.org">A Project Completed at Bayes Hack</href>
     </div>
 
 </div>
