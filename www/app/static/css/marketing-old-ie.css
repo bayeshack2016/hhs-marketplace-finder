@@ -287,13 +287,20 @@ body {
     border: none;
 }
 
+<<<<<<< HEAD
+=======
 
 .pad-box {
     padding: 1em;
 }
 
+>>>>>>> 1843fcde0a2b72d1f108c5500d5f6b649b3e6b01
 /*
  * -- DESKTOP (AND UP) MEDIA QUERIES --
  * On desktops and other large devices, we want to over-ride some
  * of the mobile and tablet styles.
+<<<<<<< HEAD
  */
+=======
+ */
+>>>>>>> 1843fcde0a2b72d1f108c5500d5f6b649b3e6b01
