@@ -135,6 +135,13 @@
         </div>
       </div>
     </div>
+    <div class="content">
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+              <div id="mapid" style="width: 100%;height: 400px"></div>
+            </div>
+          </div>
+    </div>
     <div class="content" id="form">
         <div class="pure-g">
             <div id="result" class="l-box-lrg pure-u-1 pure-u-md-3-5">
@@ -190,6 +197,29 @@
 
 </div>
 
+<script type="text/javascript">
+  var mymap = L.map('mapid').setView([34.7522484,-92.3126496], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      maxZoom: 18,
+      id: 'sampathweb.ka0kj5o8',
+      accessToken: 'pk.eyJ1Ijoic2FtcGF0aHdlYiIsImEiOiJsMVVoaEdNIn0.jWEnLF_soLoNYAO7zEkGZg'
+  }).addTo(mymap);
+
+  var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+  var popup = L.popup();
+
+  function onMapClick(e) {
+      popup
+          .setLatLng(e.latlng)
+          .setContent("You clicked the map at " + e.latlng.toString())
+          .openOn(mymap);
+  }
+
+  mymap.on('click', onMapClick);
+
+</script>
 <script>
 (function (root) {
 // -- Data --
