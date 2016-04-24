@@ -278,6 +278,10 @@ a.pure-button-primary {
   height: 100%;
 }
 
+.pad-box {
+    padding: 1em;
+}
+
 /*
  * -- DESKTOP (AND UP) MEDIA QUERIES --
  * On desktops and other large devices, we want to over-ride some
