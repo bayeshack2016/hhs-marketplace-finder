@@ -33,19 +33,13 @@ class InForm(Form):
 def index():
     form = InForm(request.form)
     if (request.method == 'POST') & form.validate():
-<<<<<<< HEAD
-=======
         # Field parameters
->>>>>>> 1843fcde0a2b72d1f108c5500d5f6b649b3e6b01
         params = {}
         params['state'] = 'Arkansas'
         params['locals'] = search.get_locals(form.zip_code.data)
         if form.doctor.data:
             fname, lname = search.split_name(form.doctor.data)
             params['plans'] = search.get_plans(fname, lname)
-<<<<<<< HEAD
-        return render_template('index.html', form=form, **params)
-=======
             print(form)
             print(params)
         # Plan recommendations
@@ -63,7 +57,6 @@ def index():
         }
         # Push data do page
         return render_template('index.html', form=form, **params, **plans)
->>>>>>> 1843fcde0a2b72d1f108c5500d5f6b649b3e6b01
     else:
         print(request.method)
         print(form.validate())
