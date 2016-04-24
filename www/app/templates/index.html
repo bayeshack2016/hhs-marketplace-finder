@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% from "form_helpers.html" import render_field %}
 
 <div class="header" id="top">
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="">Bayes Hack 2016 - Find your best health care provider</a>
+        <a class="pure-menu-heading" href="">Find your best health plan</a>
 
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="#top" class="pure-menu-link">Home</a></li>
@@ -94,45 +95,28 @@
                 <form class="pure-form pure-form-stacked", method="POST">
                     <fieldset>
 
-                        <label for="zip">Your Zip Code</label>
-                        <input class="pure-input-1-4" id="zip" type="text" placeholder="94720" required>
-
-
-                        <label for="age">Your Age</label>
-                        <input class="pure-input-1-4" id="age" type="text" placeholder="42">
-
-                        <label for="sex">Your Gender</label>
-                        <select id="sex">
-                            <option>prefer not to say</option>
-                            <option>female</option>
-                            <option>male</option>
-                            <option>transgendered</option>
-                        </select>
-
-                        <label for="smoke">Smoking</label>
-                        <select id="smoke">
-                            <option>prefer not to say</option>
-                            <option>never did</option>
-                            <option>used to</option>
-                            <option>still do</option>
-                        </select>
-
-                        <label for="doctor">Your Doctor</label>
-                        <input class="pure-input-1-4" id="doctor" type="text" placeholder="doesn't matter">
+                        {{ render_field(form.zip_code) }}
+                        {{ render_field(form.age) }}
+                        {{ render_field(form.sex) }}
+                        {{ render_field(form.smoking) }}
+                        {{ render_field(form.doctor) }}
 
                         <button type="submit" class="pure-button">Submit</button>
                     </fieldset>
                 </form>
             </div>
 
-            <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
-                <h4>Your Plans</h4>
+            <div id="result" class="l-box-lrg pure-u-1 pure-u-md-3-5">
+                {% if state %}
+                <h4>Your Plans For {{state}}</h4>
                 <ul>
-                    <li>Plan One</li>
-                    <li>Plan Two</li>
-                    <li>...</li>
+                    <li>{{plan_one}}</li>
+                    <li>{{plan_two}}</li>
+                    <li>{{plan_three}}</li>
+                    <li>{{plan_four}}</li>
+                    <li>{{plan_five}}</li>
                 </ul>
-
+                {% endif %}
             </div>
         </div>
 
