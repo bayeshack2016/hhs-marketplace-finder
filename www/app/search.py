@@ -34,11 +34,16 @@ def get_plans(fname, lname):
     )
 
 def get_locals(zip_code):
-    cursor = c['providers']['addresses'].find_one(
+    return_list = []
+    cursor = c['providers']['addresses'].find(
         {
             'values' : {
                 '$elemMatch' : {'zip' : zip_code}
             }
+        },{
+        '_id' : 0
         }
     )
-    return list(cursor)
+    for item in cursor:
+        return_list.extend(item['values'])
+    return return_list
