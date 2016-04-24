@@ -29,6 +29,9 @@ label {
     height: auto;
 }
 
+dd {
+    margin: 0;
+}
 /*
  * -- LAYOUT STYLES --
  * These are some useful classes which I will need

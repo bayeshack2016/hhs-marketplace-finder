@@ -13,7 +13,7 @@ def split_name(name_string):
     return fname, lname
 
 def get_plans(fname, lname):
-    doctor_id = c['provider']['name'].find_one(
+    doctor_id = c['providers']['name'].find_one(
         {
         'values' :
             {
@@ -24,7 +24,7 @@ def get_plans(fname, lname):
         '_id' : 1
         }
     )
-    return c['provider']['plans'].find_one(
+    return c['providers']['plans'].find_one(
         {
         '_id' : doctor_id
         },

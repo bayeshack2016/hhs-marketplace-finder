@@ -14,7 +14,7 @@ def make_providers():
     for collection in ['plans', 'addresses', 'name', 'accepting']:
         for document_id, array in dat[collection].items():
             document = {'_id' : document_id, 'values' : array}
-            c[database][collection].insert_one(document)
+            c['providers'][collection].insert_one(document)
 
 if __name__ == '__main__':
     make_providers()

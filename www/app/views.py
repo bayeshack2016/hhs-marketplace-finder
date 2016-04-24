@@ -6,13 +6,7 @@ from wtforms.validators import DataRequired, Length, NumberRange, Optional
 
 class InForm(Form):
 
-    zip_code = StringField('Your zip code', validators=[DataRequired()])
-
-    def validate_zip_code(form, field):
-        try:
-            int(field.data)
-        except:
-            raise ValidationError("Not a valid zip code")
+    zip_code = StringField('Your zip code')
 
     age = IntegerField('How old are you?', validators=[Optional()])
 
@@ -31,7 +25,7 @@ class InForm(Form):
     education = SelectField('What is the highest educational level you have obtained?', choices=[('decline', 'decline to share'), ('no diploma', 'no diploma'), ('high school or GED', 'high school or GED'), ('college', 'college'), ('postgraduate', 'postgraduate')], validators=[Optional()])
 
     income = SelectField('How much money did you make last year?', choices=[('decline', 'decline to share'), ('< $20,000', '< $20,000'), ('$20,000 < $45,000', '$20,000 < $45,000'), ('$45,000 < $75,000', '$45,000 < $75,000'), ('> $75,000', '> $75,000')], validators=[Optional()])
-    
+
     doctor = StringField('If you have a doctor you like, enter their name here', validators=[Optional()])
 
 
