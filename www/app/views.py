@@ -33,13 +33,30 @@ class InForm(Form):
 def index():
     form = InForm(request.form)
     if (request.method == 'POST') & form.validate():
+        # Field parameters
         params = {}
         params['state'] = 'Arkansas'
         params['locals'] = search.get_locals(form.zip_code.data)
         if form.doctor.data:
             fname, lname = search.split_name(form.doctor.data)
             params['plans'] = search.get_plans(fname, lname)
-        return render_template('index.html', form=form, **params)
+            print(form)
+            print(params)
+        # Plan recommendations
+        plans = {
+            'plan_one' : """HERITAGE-PLUS, 38344AK0980016
+             -- Has your doctor and minimizes expected cost""",
+            'plan_two' : """HERITAGE-STANDARD, 38344AK0980006
+             -- Has your doctor and costs less if you don't get sick""",
+            'plan_three' : """HERITAGE-SILVER, 38344AK0980012
+             -- Has your doctor and covers more procedures""",
+            'plan_four' : """SHIELD-STANDARD, A4BB7012012
+             -- Does not have your doctor and minimizes expected cost""",
+            'plan_five' : """SHIELD-PLUS, A4BB9012012
+             -- Does not have your doctor and covers more procedures"""
+        }
+        # Push data do page
+        return render_template('index.html', form=form, **params, **plans)
     else:
         print(request.method)
         print(form.validate())
