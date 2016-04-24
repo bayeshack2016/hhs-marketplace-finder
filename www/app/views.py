@@ -25,7 +25,7 @@ def index():
     form = InForm(request.form)
     if (request.method == 'POST') & form.validate():
         params = {}
-        params['state'] = 'California'
+        params['state'] = 'Arkansas'
         return render_template('index.html', form=form, **params)
     else:
         print(request.method)
