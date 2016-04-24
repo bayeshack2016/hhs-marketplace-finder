@@ -14,8 +14,8 @@ class InForm(Form):
             raise ValidationError("Not a valid zip code")
 
     age = IntegerField('Your age', validators=[Optional()])
-    sex = SelectField('Your gender', choices=[(None, 'decline to share'), ('female', 'female'), ('male', 'male'), ('trans', 'transgendered')], validators=[Optional()])
-    smoking = SelectField('Your smoking', choices=[(None, 'decline to share'), ('never did', 'never did'), ('used to', 'used to'), ('still do', 'still do')], validators=[Optional()])
+    sex = SelectField('Your gender', choices=[('decline', 'decline to share'), ('female', 'female'), ('male', 'male'), ('trans', 'transgendered')], validators=[Optional()])
+    smoking = SelectField('Your smoking', choices=[('decline', 'decline to share'), ('never did', 'never did'), ('used to', 'used to'), ('still do', 'still do')], validators=[Optional()])
     doctor = StringField('Your doctor', validators=[Optional()])
 
 
