@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% from "form_helpers.html" import render_field %}
+
+<div class="header" id="top">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="">Find your best health plan</a>
+
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#top" class="pure-menu-link">Home</a></li>
+            <li class="pure-menu-item"><a href="https://github.com/davidcdupuis/bayes-hack-2016" class="pure-menu-link">Code</a></li>
+            <li class="pure-menu-item"><a href="https://github.com/davidcdupuis/bayes-hack-2016/contributors" class="pure-menu-link">About us</a></li>
+            <li class="pure-menu-item"><a href="#form" class="pure-menu-link">Try it!</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">Be Healthy</h1>
+        <p class="splash-subhead">
+            It's <em>your</em> health care -- make it work for you!
+        </p>
+        <p>
+            <a href="#form" class="pure-button pure-button-primary">Get Started</a>
+        </p>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="content">
+        <h2 class="content-head is-center">We use data science to find the best plan for you</h2>
+
+        <div class="pure-g">
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+                <h3 class="content-subhead">
+                    <i class="fa fa-rocket"></i>
+                    It's fast
+                </h3>
+                <p>
+                    Answer just ten questions and be on your way
+                </p>
+            </div>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-mobile"></i>
+                    It's mobile
+                </h3>
+                <p>
+                    Check plans on your computer, tablet, or phone
+                </p>
+            </div>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-th-large"></i>
+                    It's simple
+                </h3>
+                <p>
+                    See a simple explanation of your plan along how much you can expect to pay in total costs this year
+                </p>
+            </div>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-check-square-o"></i>
+                    It's yours
+                </h3>
+                <p>
+                    You can keep your favorite doctor, cover your preexisting conditions, and be prepared for surprises
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ribbon l-box-lrg pure-g">
+        <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
+            <img class="pure-img-responsive" alt="File Icons" width="300" src="static/image/file-icons.png">
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+
+            <h2 class="content-head content-head-ribbon">How does it work?</h2>
+
+            <p>
+                We use advanced algorithms to predict your health care needs for the calendar year, and choose the plan that minimizes your total expected health care costs.
+            </p>
+        </div>
+    </div>
+
+    <div class="content" id="form">
+      <h2 class="content-head is-center">We just need to ask a few questions to get started</h2>
+
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <form class="pure-form pure-form-stacked" method="POST">
+            <fieldset>
+              <div class="pure-g">
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.zip_code) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.age) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.sex) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.smoking) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.physical) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.mental) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.pregnant) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.hospital) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.education) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.income) }}
+                  </div>
+                  <div class="pure-u-1 pure-u-md-1-3">
+                    {{ render_field(form.doctor) }}
+                  </div>
+              </div>
+              <button type="submit" class="pure-button pure-button-primary">Submit</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% if state %}
+    <div class="ribbon pure-g" id="result">
+        <div class="pur-u-1">
+            <h2 class="content-head is-center content-head-ribbon">Your plans for the state of {{state}}</h2>
+            <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+                <h4></h4>
+                <ul>
+                    <li>{{plan_one}}</li>
+                    <li>{{plan_two}}</li>
+                    <li>{{plan_three}}</li>
+                    <li>{{plan_four}}</li>
+                    <li>{{plan_five}}</li>
+                </ul>
+            </div>
+            <div id="result" class="l-box-lrg pure-u-1 pure-u-md-2-5">
+                <div class="l-box">
+                    <img class="pure-img-responsive" alt="plot" width="600" src="static/image/plot.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="content">
+        <div class="pure-g">
+            <div class=pure-u-1>
+                <h2 class="content-head is-center">Here are the doctors you can visit</h2>
+                <div class="pure-u-1-5">
+                    <div class="l-box"></div>
+                </div>
+                <div class="pure-u-3-5">
+                  <div id="mapid" style="width: 100%;height: 400px"></div>
+                </div>
+                <div class="pure-u-1-5">
+                    <div class="l-box"></div>
+                </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="footer l-box is-center">
+        <href a="https://bayeshack.org">A Project Completed at Bayes Hack</href>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+  var mymap = L.map('mapid').setView([34.7522484,-92.3126496], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      maxZoom: 18,
+      id: 'sampathweb.ka0kj5o8',
+      accessToken: 'pk.eyJ1Ijoic2FtcGF0aHdlYiIsImEiOiJsMVVoaEdNIn0.jWEnLF_soLoNYAO7zEkGZg'
+  }).addTo(mymap);
+
+  var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+  var popup = L.popup();
+
+  function onMapClick(e) {
+      popup
+          .setLatLng(e.latlng)
+          .setContent("You clicked the map at " + e.latlng.toString())
+          .openOn(mymap);
+  }
+
+  mymap.on('click', onMapClick);
+
+</script>
+<script>
+(function (root) {
+// -- Data --
+root.YUI_config = {"version":"3.17.2","base":"http:\u002F\u002Fyui.yahooapis.com\u002F3.17.2\u002F","comboBase":"http:\u002F\u002Fyui.yahooapis.com\u002Fcombo?","comboSep":"&","root":"3.17.2\u002F","filter":"min","logLevel":"error","combine":true,"patches":[],"maxURLLength":2048,"groups":{"vendor":{"combine":true,"comboBase":"\u002Fcombo\u002F1.18.13?","base":"\u002F","root":"\u002F","modules":{"css-mediaquery":{"path":"vendor\u002Fcss-mediaquery.js"},"handlebars-runtime":{"path":"vendor\u002Fhandlebars.runtime.js"}}},"app":{"combine":true,"comboBase":"\u002Fcombo\u002F1.18.13?","base":"\u002Fjs\u002F","root":"\u002Fjs\u002F"}}};
+root.app || (root.app = {});
+root.app.yui = {"use":function () { return this._bootstrap('use', [].slice.call(arguments)); },"require":function () { this._bootstrap('require', [].slice.call(arguments)); },"ready":function (callback) { this.use(function () { callback(); }); },"_bootstrap":function bootstrap(method, args) { var self = this, d = document, head = d.getElementsByTagName('head')[0], ie = /MSIE/.test(navigator.userAgent), callback = [], config = typeof YUI_config != "undefined" ? YUI_config : {}; function flush() { var l = callback.length, i; if (!self.YUI && typeof YUI == "undefined") { throw new Error("YUI was not injected correctly!"); } self.YUI = self.YUI || YUI; for (i = 0; i < l; i++) { callback.shift()(); } } function decrementRequestPending() { self._pending--; if (self._pending <= 0) { setTimeout(flush, 0); } else { load(); } } function createScriptNode(src) { var node = d.createElement('script'); if (node.async) { node.async = false; } if (ie) { node.onreadystatechange = function () { if (/loaded|complete/.test(this.readyState)) { this.onreadystatechange = null; decrementRequestPending(); } }; } else { node.onload = node.onerror = decrementRequestPending; } node.setAttribute('src', src); return node; } function load() { if (!config.seed) { throw new Error('YUI_config.seed array is required.'); } var seed = config.seed, l = seed.length, i, node; if (!self._injected) { self._injected = true; self._pending = seed.length; } for (i = 0; i < l; i++) { node = createScriptNode(seed.shift()); head.appendChild(node); if (node.async !== false) { break; } } } callback.push(function () { var i; if (!self._Y) { self.YUI.Env.core.push.apply(self.YUI.Env.core, config.extendedCore || []); self._Y = self.YUI(); self.use = self._Y.use; if (config.patches && config.patches.length) { for (i = 0; i < config.patches.length; i += 1) { config.patches[i](self._Y, self._Y.Env._loader); } } } self._Y[method].apply(self._Y, args); }); self.YUI = self.YUI || (typeof YUI != "undefined" ? YUI : null); if (!self.YUI && !self._injected) { load(); } else if (self._pending <= 0) { setTimeout(flush, 0); } return this; }};
+root.YUI_config || (root.YUI_config = {});
+root.YUI_config.seed = ["http:\u002F\u002Fyui.yahooapis.com\u002Fcombo?3.17.2\u002Fyui\u002Fyui-min.js"];
+root.YUI_config.groups || (root.YUI_config.groups = {});
+root.YUI_config.groups.app || (root.YUI_config.groups.app = {});
+root.YUI_config.groups.app.modules = {"start\u002Fapp":{"path":"start\u002Fapp.js","requires":["handlebars-runtime","yui","base-build","router","pjax-base","view","start\u002Fmodels\u002Fgrid","start\u002Fviews\u002Finput","start\u002Fviews\u002Foutput","start\u002Fviews\u002Fdownload"]},"start\u002Fmodels\u002Fgrid":{"path":"start\u002Fmodels\u002Fgrid.js","requires":["yui","querystring","base-build","model","model-sync-rest","start\u002Fmodels\u002Fmq"]},"start\u002Fmodels\u002Fmq":{"path":"start\u002Fmodels\u002Fmq.js","requires":["css-mediaquery","attribute","base-build","model","model-list"]},"start\u002Fviews\u002Fdownload":{"path":"start\u002Fviews\u002Fdownload.js","requires":["yui","base-build","querystring","view"]},"start\u002Fviews\u002Finput":{"path":"start\u002Fviews\u002Finput.js","requires":["base-build","start\u002Fmodels\u002Fmq","start\u002Fviews\u002Ftab"]},"start\u002Fviews\u002Foutput":{"path":"start\u002Fviews\u002Foutput.js","requires":["base-build","escape","start\u002Fviews\u002Ftab"]},"start\u002Fviews\u002Ftab":{"path":"start\u002Fviews\u002Ftab.js","requires":["yui","base-build","view"]}};
+}(this));
+</script>
+<script>
+app.yui.use('node-base', 'node-event-delegate', function (Y) {
+    // This just makes sure that the href="#" attached to the <a> elements
+    // don't scroll you back up the page.
+    Y.one('body').delegate('click', function (e) {
+        e.preventDefault();
+    }, 'a[href="#"]');
+});
+</script>
+
+{% endblock %}
