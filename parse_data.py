@@ -176,10 +176,35 @@ def parse_persons():
         for line in csv_list:
             writer.writerow(line)
         csvfile.close()
-def check_file():
-    f = open('persons.csv','r')
-    i = 0
-    while i < 2:
-        print f.readline()
-        i+=1
-check_file()
+
+def get_variable_list():
+    """
+    Get list of variables for reducing csv file
+    """
+    f = open('predictors.txt','r')
+    reader = f.readlines()
+    reader = [x.strip() for x in reader]
+    f.close()
+    return reader
+
+def get_reduced_file(variables, filename='feature_set.txt', big_file = 'persons.csv'):
+    """
+    Takes in list of variables and reduces the csv file to the
+    reduced feature set
+    """
+    f = open(big_file,'r')
+    reader = csv.DictReader(f)
+
+    with open(filename, 'w') as csvfile:
+        fieldnames = variables
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for line in reader:
+            write_row = {}
+            for elem in variables:
+                write_row[elem] = line[elem]
+            writer.writerow(write_row)
+        csvfile.close()
+    f.close()
+
+get_reduced_file(get_variable_list())
