@@ -116,25 +116,24 @@
                     <li>{{plan_four}}</li>
                     <li>{{plan_five}}</li>
                 </ul>
+                {% with %}
+
+                    {% set location=(34.7522484,-92.3126496) %}
+                    {% set style="width:500px;height:500px;"%}
+
+                    {{
+                    googlemap(
+                        "simple-map",
+                        location.0, location.1,
+                        markers=[location,],
+                        style=style
+                        )
+                    }}
+
+                {% endwith %}
                 {% endif %}
             </div>
         </div>
-
-        {% with %}
-
-            {% set location=(-23.599097,-46.675903) %}
-            {% set style="width:500px;height:500px;"%}
-
-            {{
-            googlemap(
-                "simple-map",
-                location.0, location.1,
-                markers=[location,],
-                style=style
-                )
-            }}
-
-        {% endwith %}
     </div>
 
     <div class="ribbon pure-g">
